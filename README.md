@@ -10,6 +10,3 @@ Nesse desafio, você deverá criar uma aplicação para treinar o que 
 
 [ x ] - Excluir um *todo*;
 
-[ x ] - Excluir um *todo*;
-
-
