@@ -11,8 +11,7 @@ app.use(express.json());
 const users = [];
 
 function checksExistsUserAccount(request, response, next) {
-  // Complete aqui
-  
+   
   const {username } = request.headers
   
   const user = users.find((user) => user.username===username)
@@ -27,8 +26,7 @@ function checksExistsUserAccount(request, response, next) {
 }
 
 app.post('/users', (request, response) => {
-  // Complete aqui
-  const {name,username} =request.body
+   const {name,username} =request.body
   
   users.push({
     id: uuidv4(),
@@ -41,8 +39,7 @@ app.post('/users', (request, response) => {
 });
 
 app.get('/todos', checksExistsUserAccount, (request, response) => {
-  // Complete aqui
-  
+   
   const {todos} = request.user
     
   response.status(200).json(todos)
@@ -51,8 +48,7 @@ app.get('/todos', checksExistsUserAccount, (request, response) => {
 });
 
 app.post('/todos',checksExistsUserAccount, (request, response) => {
-  // Complete aqui
-    const {username} = request.headers
+     const {username} = request.headers
     const {title,deadline} = request.body
     
     request.user.todos.push({
@@ -67,8 +63,7 @@ app.post('/todos',checksExistsUserAccount, (request, response) => {
 });
 
 app.put('/todos/:id', checksExistsUserAccount, (request, response) => {
-  // Complete aqui
-  const {title,deadline} = request.body
+   const {title,deadline} = request.body
   const {todos} = request.user
   const {id} = request.params
     
@@ -90,8 +85,7 @@ app.put('/todos/:id', checksExistsUserAccount, (request, response) => {
 });
 
 app.patch('/todos/:id/done', checksExistsUserAccount, (request, response) => {
-  // Complete aqui
-  const {todos} = request.user
+   const {todos} = request.user
   const {id} = request.params
   
   const todo = todos.find((todo) => todo.id === id)
@@ -112,8 +106,7 @@ app.patch('/todos/:id/done', checksExistsUserAccount, (request, response) => {
 });
 
 app.delete('/todos/:id', checksExistsUserAccount, (request, response) => {
-  // Complete aqui
-  const {todos} = request.user
+   const {todos} = request.user
   const {id} = request.params
 
   const todo = todos.find((todo) => todo.id === id)
@@ -124,7 +117,7 @@ app.delete('/todos/:id', checksExistsUserAccount, (request, response) => {
   
   
   todos.splice(todo,1)
-  response.status(200).json(todos)
+  response.status(204).json(todos)
   
 });
 
